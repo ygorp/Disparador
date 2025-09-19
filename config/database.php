@@ -3,9 +3,9 @@
 // --- Configurações do Banco de Dados ---
 // Altere para as suas credenciais
 $db_host = 'localhost';         // Geralmente 'localhost' ou o IP do seu servidor de banco de dados
-$db_name = 'u453299989_sistemadiscado'; // O nome do banco de dados que você criou
-$db_user = 'u453299989_sistemadiscado';              // Seu usuário do banco de dados
-$db_pass = 'ZXTBewwi3z]';                  // Sua senha do banco de dados
+$db_name = 'u137551770_disparador'; // O nome do banco de dados que você criou
+$db_user = 'u137551770_disparador';              // Seu usuário do banco de dados
+$db_pass = 'P@checo7292';                  // Sua senha do banco de dados
 $db_charset = 'utf8mb4';
 
 // --- DSN (Data Source Name) ---

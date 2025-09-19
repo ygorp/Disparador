@@ -24,7 +24,14 @@ require_once __DIR__ . '/../../config/config.php';
         }
     </script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Inter', sans-serif; } </style>
+    <style> 
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Máscara CPF */
+        .cpf-mask {
+            font-family: monospace;
+        }
+    </style>
 </head>
 <body class="bg-fundo-principal flex items-center justify-center min-h-screen">
 
@@ -49,10 +56,25 @@ require_once __DIR__ . '/../../config/config.php';
                     <label for="nome" class="block text-gray-300 text-sm font-medium mb-2">Nome Completo</label>
                     <input type="text" id="nome" name="nome" class="w-full px-4 py-2 bg-fundo-principal text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-roxo-principal" required>
                 </div>
+                
+                <div class="mb-4">
+                    <label for="cpf" class="block text-gray-300 text-sm font-medium mb-2">CPF</label>
+                    <input type="text" id="cpf" name="cpf" class="cpf-mask w-full px-4 py-2 bg-fundo-principal text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-roxo-principal" 
+                           placeholder="000.000.000-00" maxlength="14" required>
+                    <p class="text-xs text-gray-500 mt-1">Necessário para emissão de cobranças</p>
+                </div>
+                
                 <div class="mb-4">
                     <label for="email" class="block text-gray-300 text-sm font-medium mb-2">E-mail</label>
                     <input type="email" id="email" name="email" class="w-full px-4 py-2 bg-fundo-principal text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-roxo-principal" required>
                 </div>
+                
+                <div class="mb-4">
+                    <label for="telefone" class="block text-gray-300 text-sm font-medium mb-2">Telefone (Opcional)</label>
+                    <input type="text" id="telefone" name="telefone" class="w-full px-4 py-2 bg-fundo-principal text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-roxo-principal" 
+                           placeholder="(11) 99999-9999">
+                </div>
+                
                 <div class="mb-4">
                     <label for="senha" class="block text-gray-300 text-sm font-medium mb-2">Senha</label>
                     <input type="password" id="senha" name="senha" class="w-full px-4 py-2 bg-fundo-principal text-white border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-roxo-principal" required>
@@ -72,6 +94,25 @@ require_once __DIR__ . '/../../config/config.php';
             </form>
         </div>
     </main>
+
+    <script>
+        // Máscara para CPF
+        document.getElementById('cpf').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d)/, '$1.$2');
+            value = value.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            e.target.value = value;
+        });
+
+        // Máscara para telefone
+        document.getElementById('telefone').addEventListener('input', function (e) {
+            let value = e.target.value.replace(/\D/g, '');
+            value = value.replace(/(\d{2})(\d)/, '($1) $2');
+            value = value.replace(/(\d{4,5})(\d{4})$/, '$1-$2');
+            e.target.value = value;
+        });
+    </script>
 
 </body>
 </html>
